@@ -1,0 +1,43 @@
+.navbar-brand {
+  display: block;
+  position: relative;
+
+  &.header {
+    float: left;
+    margin: 15px 0 0 40px;
+
+    img {
+      float: left;
+    }
+  }
+
+  a {
+    margin: 0 !important;
+  }
+
+  img {
+    height: 40px;
+    vertical-align: middle;
+    border-style: none;
+  }
+
+  .mit-link, .xpro-link {
+    position: absolute;
+    z-index: 2;
+    opacity: .5;
+  }
+
+  .mit-link {
+    left: 0;
+    top: 0;
+    width: 64px;
+    height: 40px;
+  }
+
+  .xpro-link {
+    left: 74px;
+    top: 2px;
+    width: 60px;
+    height: 40px;
+  }
+}
