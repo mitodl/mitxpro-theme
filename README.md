@@ -1,25 +1,25 @@
 # mitxpro-theme
 An open edX theme for MIT xPRO 
 
-##Table of contents:
+## Table of contents:
 1. Configure Open edX
 2. Configuring MIT xPRO theme
 
 
-###1. Configure Open edX
+### 1. Configure Open edX
 Following steps are inspired by https://github.com/edx/devstack
 
-####Clone edx/devstack
+#### Clone edx/devstack
 
 ```
 $ git clone https://github.com/edx/devstack
 $ cd devstack
 $ make requirements
-$ export OPENEDX_RELEASE=hawthorn.master
+$ export OPENEDX_RELEASE=ironwood.master
 $ make dev.clone
 ```
 
-####Clone and checkout edx-platform.
+#### Clone and checkout edx-platform.
 ```
 $ git clone https://github.com/mitodl/edx-platform
 $ git checkout xpro/ironwood
@@ -32,7 +32,7 @@ $ make pull
 $ make dev.provision 
 ```
 
-####Common issues:
+#### Common issues:
 If you get issue while gettings any particular repo/images. You can simply try downloading our relevant images. 
 
 ```docker-compose pull lms studio```
