@@ -38,7 +38,7 @@ If you get issue while gettings any particular repo/images. You can simply try d
 
 ```docker-compose pull lms studio```
 
-As we don't need ecommerce, registerar etc. I believe we only need following IDAs, may be even less than these.
+As we don't need ecommerce, registrar etc. I believe we only need following IDAs, may be even less than these.
 
 1. edx.devstack.elasticsearch
 2. edx.devstack.chrome
@@ -70,7 +70,7 @@ And run the following to stop it.
 
 ## 2. Configuring MIT xPRO theme
 
-For detail about themeing, please see edx-docs [edx-docs](https://edx.readthedocs.io/projects/edx-installing-configuring-and-running/en/latest/configuration/changing_appearance/theming/overview_themes.html).
+For detail about themes, please see [edx-docs about themes](https://edx.readthedocs.io/projects/edx-installing-configuring-and-running/en/latest/configuration/changing_appearance/theming/overview_themes.html).
 
 For the LMS, you edit `/edx/app/edxapp/lms.env.json` to set 
 
@@ -81,7 +81,7 @@ For Studio, you edit `/edx/app/edxapp/cms.env.json` to set
 `"ENABLE_COMPREHENSIVE_THEMING": true`
 
 For each Open edX component that you want to apply a theme to, add the absolute path of the themes directory to the `COMPREHENSIVE_THEME_DIRS` configuration property.
-That path should be accessible to docker container. Easiast way is to put you theme in `edx-platform/themes`.
+That path should be accessible to docker container. Easiest way is to put you theme in `edx-platform/themes`.
 
 If you have you theme along with other themes at `edx-platform/themes/mitxpro-theme`, you have to add path as follows.
 
