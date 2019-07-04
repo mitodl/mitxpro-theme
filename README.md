@@ -15,6 +15,7 @@ Following steps are inspired by [edx-devstack](https://github.com/edx/devstack).
 ```
 $ git clone https://github.com/edx/devstack
 $ cd devstack
+$ git checkout open-release/ironwood.master
 $ make requirements
 $ export OPENEDX_RELEASE=ironwood.master
 $ make dev.clone
