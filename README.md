@@ -14,6 +14,10 @@ Please follow [Configure Open edX](https://github.com/mitodl/mitxpro/blob/master
 
 For detail about themes, please see [edx-docs about themes](https://edx.readthedocs.io/projects/edx-installing-configuring-and-running/en/latest/configuration/changing_appearance/theming/overview_themes.html).
 
+Make sure you have MIT xPRO base url set in your settings. You can either add it in `env` files or simply add it in `edx-platform/lms/envs/private.py`. e.g
+
+`XPRO_BASE_URL="http://xpro.odl.local:8053/"`
+
 For the LMS, you edit `/edx/app/edxapp/lms.env.json` to set 
 
 `"ENABLE_COMPREHENSIVE_THEMING": true`
@@ -31,8 +35,7 @@ For Studio, add the path to `COMPREHENSIVE_THEME_DIRS` in `/edx/app/edxapp/cms.e
 
 ```
 "COMPREHENSIVE_THEME_DIRS": [
-    "/my-open-edx-themes/edx-platform"
-
+    "/edx/app/edxapp/edx-platform/themes"
 ],
 ```
 
@@ -40,7 +43,7 @@ For the LMS, add the path to `COMPREHENSIVE_THEME_DIRS` in `/edx/app/edxapp/lms.
 
 ```
 "COMPREHENSIVE_THEME_DIRS": [
-    "/my-open-edx-themes/edx-platform"
+    "/edx/app/edxapp/edx-platform/themes"
 ],
 ```
 
