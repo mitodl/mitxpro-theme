@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# ignore generated assets
+lms/static/css
+cms/static/css
