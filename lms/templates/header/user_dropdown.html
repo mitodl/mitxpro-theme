@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext as _
 
 from openedx.core.djangoapps.user_api.accounts.utils import retrieve_last_sitewide_block_completed
+from student.models import UserProfile
 %>
 
 <%
@@ -17,7 +18,7 @@ from openedx.core.djangoapps.user_api.accounts.utils import retrieve_last_sitewi
 self.real_user = getattr(user, 'real_user', user)
 username = self.real_user.username
 resume_block = retrieve_last_sitewide_block_completed(self.real_user)
-full_name = self.real_user.get_full_name()
+full_name = UserProfile.objects.get(user=self.real_user).name
 dashboard_url = urljoin(settings.XPRO_BASE_URL, "dashboard")
 profile_url = urljoin(settings.XPRO_BASE_URL, "profile")
 %>
