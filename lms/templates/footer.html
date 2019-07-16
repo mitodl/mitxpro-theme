@@ -1,12 +1,31 @@
 ## mako
 <%page expression_filter="h"/>
 <%!
+  from urlparse import urljoin
   from django.urls import reverse
   from django.utils.translation import ugettext as _
   from branding.api import get_footer
   from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+  from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
-<% footer = get_footer(is_secure=is_secure) %>
+<%
+  platform_name = configuration_helpers.get_value('platform_name', settings.PLATFORM_NAME)
+  footer = get_footer(is_secure=is_secure)
+  footer['copyright'] = _(u"\u00A9 {org_name}.  All rights reserved except where noted.").format(org_name=platform_name)
+  footer['navigation_links'] = [
+    {
+        "name": link_name,
+        "title": link_title,
+        "url": link_url,
+    }
+    for link_name, link_url, link_title in [
+        ("about", urljoin(settings.XPRO_BASE_URL, '/about-us/'), _("About")),
+        ("help-center", "https://xpro.zendesk.com/hc/", _("Support Center")),
+        ("contact", "https://xpro.zendesk.com/hc/en-us/requests/new", _("Contact")),
+    ]
+    if link_url and link_url != "#"
+  ]
+%>
 <%namespace name='static' file='static_content.html'/>
 
 % if uses_bootstrap:
