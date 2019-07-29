@@ -1,12 +1,30 @@
 ## mako
 <%page expression_filter="h"/>
 <%!
+  from urlparse import urljoin
+  from django.conf import settings
   from django.urls import reverse
   from django.utils.translation import ugettext as _
+  from edxmako.shortcuts import marketing_link
   from branding.api import get_footer
   from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+  from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
-<% footer = get_footer(is_secure=is_secure) %>
+<%
+  platform_name = configuration_helpers.get_value('platform_name', settings.PLATFORM_NAME)
+  footer = get_footer(is_secure=is_secure)
+  footer['copyright'] = _(u"\u00A9 {org_name}.  All rights reserved except where noted.").format(org_name=platform_name)
+  for idx, link_data in enumerate(footer["navigation_links"]):
+    if link_data["name"] == "help-center":
+      link_data["title"] = _("Support Center")
+      footer["navigation_links"][idx] = link_data
+    elif link_data["name"] == "contact":
+      contact_url = settings.MKTG_URLS.get("CONTACT", None)
+      if contact_url:
+        link_data["url"] = contact_url
+        footer["navigation_links"][idx] = link_data
+
+%>
 <%namespace name='static' file='static_content.html'/>
 
 % if uses_bootstrap:
