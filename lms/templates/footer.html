@@ -23,6 +23,16 @@
       if contact_url:
         link_data["url"] = contact_url
         footer["navigation_links"][idx] = link_data
+  for item_num, link in enumerate(footer['legal_links']):
+    if link['name'] == "privacy_policy":
+        link["url"] = 'https://xpro.mit.edu/privacy-policy'
+        footer["legal_links"][item_num] = link
+    elif link['name'] == "terms_of_service":
+        link["url"] = 'https://xpro.mit.edu/terms-of-service'
+        footer["legal_links"][item_num] = link
+    elif link['name'] == "honor_code":
+        link["url"] = 'https://xpro.mit.edu/honor-code'
+        footer["legal_links"][item_num] = link
 
 %>
 <%namespace name='static' file='static_content.html'/>
@@ -52,9 +62,6 @@
                   <a class="nav-link" href="${link['url']}">${link['title']}</a>
                 </li>
               % endfor
-              <li class="nav-item">
-                <a class="nav-link" href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a>
-              </li>
             </ul>
           </nav>
         </div>
@@ -79,7 +86,9 @@
           <ol>
               % for item_num, link in enumerate(footer['navigation_links'], start=1):
               <li class="nav-colophon-0${item_num}">
-                <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
+                  % if link['name'] not in ['donate', 'blog']:
+                    <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
+                  % endif
               </li>
               % endfor
           </ol>
