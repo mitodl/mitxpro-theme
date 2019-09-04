@@ -25,13 +25,13 @@
         footer["navigation_links"][idx] = link_data
   for item_num, link in enumerate(footer['legal_links']):
     if link['name'] == "privacy_policy":
-        link["url"] = 'https://xpro.mit.edu/privacy-policy'
+        link["url"] = urljoin(settings.XPRO_BASE_URL, "privacy-policy")
         footer["legal_links"][item_num] = link
     elif link['name'] == "terms_of_service":
-        link["url"] = 'https://xpro.mit.edu/terms-of-service'
+        link["url"] = urljoin(settings.XPRO_BASE_URL, "terms-of-service")
         footer["legal_links"][item_num] = link
     elif link['name'] == "honor_code":
-        link["url"] = 'https://xpro.mit.edu/honor-code'
+        link["url"] = urljoin(settings.XPRO_BASE_URL, "honor-code")
         footer["legal_links"][item_num] = link
 
 %>
