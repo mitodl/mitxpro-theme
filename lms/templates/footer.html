@@ -1,7 +1,7 @@
 ## mako
 <%page expression_filter="h"/>
 <%!
-  from urlparse import urljoin
+  from urllib.parse import urljoin
   from django.conf import settings
   from django.urls import reverse
   from django.utils.translation import ugettext as _
