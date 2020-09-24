@@ -12,7 +12,7 @@
 %>
 <%
   platform_name = configuration_helpers.get_value('platform_name', settings.PLATFORM_NAME)
-  footer = get_footer(is_secure=is_secure)
+  footer = get_footer(is_secure=True)
   footer['copyright'] = _(u"\u00A9 {org_name}.  All rights reserved except where noted.").format(org_name=platform_name)
   for idx, link_data in enumerate(footer["navigation_links"]):
     if link_data["name"] == "help-center":
