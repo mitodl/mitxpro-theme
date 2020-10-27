@@ -198,10 +198,10 @@ from student.models import CourseEnrollment
                 credit_status = credit_statuses.get(session_id)
                 course_mode_info = all_course_modes.get(session_id)
                 is_paid_course = True if entitlement else (session_id in enrolled_courses_either_paid)
-                is_course_blocked = (session_id in block_courses)
+                is_course_blocked = (session_id in block_courses) if block_courses else (False)
                 course_verification_status = verification_status_by_course.get(session_id, {})
                 course_requirements = courses_requirements_not_met.get(session_id)
-                related_programs = inverted_programs.get(unicode(entitlement.course_uuid if is_unfulfilled_entitlement else session_id))
+                related_programs = inverted_programs.get(unicode(entitlement.course_uuid if entitlement.course_uuid and is_unfulfilled_entitlement else session_id)) if inverted_programs else []
                 show_consent_link = (session_id in consent_required_courses)
                 course_overview = enrollment.course_overview
                 resume_button_url = resume_button_urls[dashboard_index]
