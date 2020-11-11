@@ -1,5 +1,5 @@
 # mitxpro-theme
-An open edX theme for MIT xPRO 
+An open edX theme for MIT xPRO
 
 ## Table of contents:
 1. Configure Open edX
@@ -14,33 +14,40 @@ Please follow [Configure Open edX](https://github.com/mitodl/mitxpro/blob/master
 
 For detail about themes, please see [edx-docs about themes](https://edx.readthedocs.io/projects/edx-installing-configuring-and-running/en/latest/configuration/changing_appearance/theming/overview_themes.html).
 
+**Note:** Please use `koa` branch from the theme repository if you are integrating it with `koa` release of `Open edX`.
+
 Make sure you have MIT xPRO base url set in your settings. You can either add it in `env` files or simply add it in `edx-platform/lms/envs/private.py`. e.g
 
 `XPRO_BASE_URL="http://xpro.odl.local:8053/"`
 
-For the LMS, you edit `/edx/app/edxapp/lms.env.json` to set 
+To apply themes in Open edX you have to add the absolute path of the themes directory to the `COMPREHENSIVE_THEME_DIRS` in `lms.yml` and `studio.yml` respectively.
+That path should be accessible to docker container. Easiest way is to put your theme in `edx-platform/themes`.
 
+If you have your theme along with other themes at `edx-platform/themes/mitxpro-theme`, you can use `/edx/app/edxapp/edx-platform/themes` as directory path while you follow the steps below.
+
+#### Open Shell
+First of all you open lms/studio shell e.g. `make lms-shell` or `make studio-shell`
+
+### OpenEdx release Juniper and above:
+For the LMS, you edit `/edx/etc/lms.yml` and for Studio, you edit `/edx/etc/studio.yml` to set below properties
+
+#### Enable theme
+`ENABLE_COMPREHENSIVE_THEMING: true`
+
+#### Add theme directory path
+```
+COMPREHENSIVE_THEME_DIRS:
+- '/edx/app/edxapp/edx-platform/themes'
+```
+
+
+### For OpenEdx release before Juniper:
+For the LMS, you edit `/edx/app/edxapp/lms.env.json` and For the Studio, you edit `/edx/app/edxapp/cms.env.json` to set below properties
+
+#### Enable theme
 `"ENABLE_COMPREHENSIVE_THEMING": true`
 
-For Studio, you edit `/edx/app/edxapp/cms.env.json` to set 
-
-`"ENABLE_COMPREHENSIVE_THEMING": true`
-
-For each Open edX component that you want to apply a theme to, add the absolute path of the themes directory to the `COMPREHENSIVE_THEME_DIRS` configuration property.
-That path should be accessible to docker container. Easiest way is to put you theme in `edx-platform/themes`.
-
-If you have you theme along with other themes at `edx-platform/themes/mitxpro-theme`, you have to add path as follows.
-
-For Studio, add the path to `COMPREHENSIVE_THEME_DIRS` in `/edx/app/edxapp/cms.env.json`.
-
-```
-"COMPREHENSIVE_THEME_DIRS": [
-    "/edx/app/edxapp/edx-platform/themes"
-],
-```
-
-For the LMS, add the path to `COMPREHENSIVE_THEME_DIRS` in `/edx/app/edxapp/lms.env.json`.
-
+#### Set theme directory path
 ```
 "COMPREHENSIVE_THEME_DIRS": [
     "/edx/app/edxapp/edx-platform/themes"
