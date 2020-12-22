@@ -1,0 +1,33 @@
+<%!
+from django.utils.translation import ugettext as _
+%>
+
+<%inherit file="../main.html"/>
+
+<%block name="title">
+    <title>
+        ${_("Contact {platform_name} Support").format(platform_name=platform_name)}
+    </title>
+</%block>
+
+<%block name="head_extra">
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</%block>
+
+<main id="main" aria-label="Content">
+  <div id="root" class="container">
+    <h2 class="heading-left">${_("Contact Us")}</h2>
+    <p style="padding-top: 16px">
+      Find answers to common questions asked by xPRO learners in the
+      <a href="https://xpro.zendesk.com/hc/">
+        MIT xPRO Help Center.
+      </a>
+    </p>
+    <p>
+      For other support questions, please
+      <a href="https://xpro.zendesk.com/hc/en-us/requests/new">
+        submit your question here.
+      </a>
+    </p>
+  </div>
+</main>
