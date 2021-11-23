@@ -5,7 +5,7 @@
   from django.conf import settings
   from django.urls import reverse
   from django.utils.translation import ugettext as _
-  from edxmako.shortcuts import marketing_link
+  from common.djangoapps.edxmako.shortcuts import marketing_link
   from lms.djangoapps.branding.api import get_footer
   from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
   from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
@@ -25,13 +25,13 @@
         footer["navigation_links"][idx] = link_data
   for item_num, link in enumerate(footer['legal_links']):
     if link['name'] == "privacy_policy":
-        link["url"] = urljoin(settings.XPRO_BASE_URL, "privacy-policy")
+        link["url"] = urljoin(settings.MARKETING_SITE_BASE_URL, "privacy-policy")
         footer["legal_links"][item_num] = link
     elif link['name'] == "terms_of_service":
-        link["url"] = urljoin(settings.XPRO_BASE_URL, "terms-of-service")
+        link["url"] = urljoin(settings.MARKETING_SITE_BASE_URL, "terms-of-service")
         footer["legal_links"][item_num] = link
     elif link['name'] == "honor_code":
-        link["url"] = urljoin(settings.XPRO_BASE_URL, "honor-code")
+        link["url"] = urljoin(settings.MARKETING_SITE_BASE_URL, "honor-code")
         footer["legal_links"][item_num] = link
 
 %>
@@ -101,7 +101,7 @@
         <div class="wrapper-logo">
             <div class="navbar-brand">
                 <a href="https://web.mit.edu/" rel="noopener noreferrer" target="_blank" class="mit-link"></a>
-                <a href="${settings.XPRO_BASE_URL}"" class="xpro-link"></a>
+                <a href="${settings.MARKETING_SITE_BASE_URL}"" class="marketing-site-link"></a>
                 <img  class="logo xpro-logo" src="${footer['logo_image']}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
             </div>
         </div>

@@ -20,7 +20,7 @@ from openedx.core.djangolib.markup import HTML, Text
                 % else:
                 ${_('The page that you were looking for was not found.')}
                 ${Text(_('Go back to the {homepage} or contact us about any pages that may have been moved at {email}.')).format(
-                  homepage=HTML('<a href="{xpro_base_url}">homepage</a>').format(xpro_base_url=settings.XPRO_BASE_URL),
+                  homepage=HTML('<a href="{marketing_site_base_url}">homepage</a>').format(marketing_site_base_url=settings.MARKETING_SITE_BASE_URL),
                   email=HTML('<a href="{address}">contact us</a>').format(
                     address=Text(settings.MKTG_URLS.get('CONTACT', None))
                   )

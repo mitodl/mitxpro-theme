@@ -19,8 +19,8 @@ self.real_user = getattr(user, 'real_user', user)
 username = self.real_user.username
 resume_block = retrieve_last_sitewide_block_completed(self.real_user)
 full_name = UserProfile.objects.get(user=self.real_user).name
-dashboard_url = urljoin(settings.XPRO_BASE_URL, "dashboard")
-profile_url = urljoin(settings.XPRO_BASE_URL, "profile")
+dashboard_url = urljoin(settings.MARKETING_SITE_BASE_URL, "dashboard")
+profile_url = urljoin(settings.MARKETING_SITE_BASE_URL, "profile")
 %>
 
 <div class="nav-item hidden-mobile">
