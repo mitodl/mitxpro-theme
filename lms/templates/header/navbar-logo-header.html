@@ -16,7 +16,7 @@ from lms.djangoapps.branding import api as branding_api
 <h1 class="header-logo">
     <div class="navbar-brand header">
       <a href="https://web.mit.edu/" rel="noopener noreferrer" target="_blank" class="mit-link"></a>
-      <a href="${settings.XPRO_BASE_URL}"" class="xpro-link"></a>
+      <a href="${settings.MARKETING_SITE_BASE_URL}"" class="marketing-site-link"></a>
       <img  class="logo xpro-logo" src="${branding_api.get_logo_url(is_secure)}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
     </div>
   % if course:

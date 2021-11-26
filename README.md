@@ -18,7 +18,7 @@ For detail about themes, please see [edx-docs about themes](https://edx.readthed
 
 Make sure you have MIT xPRO base url set in your settings. You can either add it in `env` files or simply add it in `edx-platform/lms/envs/private.py`. e.g
 
-`XPRO_BASE_URL="http://xpro.odl.local:8053/"`
+`MARKETING_SITE_BASE_URL="http://xpro.odl.local:8053/"`
 
 To apply themes in Open edX you have to add the absolute path of the themes directory to the `COMPREHENSIVE_THEME_DIRS` in `lms.yml` and `studio.yml` respectively.
 That path should be accessible to docker container. Easiest way is to put your theme in `edx-platform/themes`.
