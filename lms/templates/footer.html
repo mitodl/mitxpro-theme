@@ -33,6 +33,9 @@
     elif link['name'] == "honor_code":
         link["url"] = urljoin(settings.MARKETING_SITE_BASE_URL, "honor-code")
         footer["legal_links"][item_num] = link
+    elif link['name'] == "accessibility_policy":
+        link["title"] = "Accessibility"
+        footer["legal_links"][item_num] = link
 
 %>
 <%namespace name='static' file='static_content.html'/>
