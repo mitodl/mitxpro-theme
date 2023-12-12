@@ -19,7 +19,7 @@
       link_data["title"] = _("Support Center")
       footer["navigation_links"][idx] = link_data
     elif link_data["name"] == "contact":
-      contact_url = settings.MKTG_URLS.get("CONTACT", None)
+      contact_url = marketing_link('CONTACT')
       if contact_url:
         link_data["url"] = contact_url
         footer["navigation_links"][idx] = link_data

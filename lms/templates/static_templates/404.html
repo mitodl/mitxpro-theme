@@ -22,7 +22,7 @@ from openedx.core.djangolib.markup import HTML, Text
                 ${Text(_('Go back to the {homepage} or contact us about any pages that may have been moved at {email}.')).format(
                   homepage=HTML('<a href="{marketing_site_base_url}">homepage</a>').format(marketing_site_base_url=settings.MARKETING_SITE_BASE_URL),
                   email=HTML('<a href="{address}">contact us</a>').format(
-                    address=Text(settings.MKTG_URLS.get('CONTACT', None))
+                    address=Text(marketing_link('CONTACT'))
                   )
                 )}
                 % endif
