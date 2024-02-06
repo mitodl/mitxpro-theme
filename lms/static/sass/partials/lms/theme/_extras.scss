@@ -21,23 +21,15 @@
     border-style: none;
   }
 
-  .mit-link, .marketing-site-link {
-    position: absolute;
-    z-index: 2;
-    opacity: .5;
-  }
+  .xpro-logo {
+    height: 35px !important;
+    width: 125px;
+  }  
 
-  .mit-link {
-    left: 0;
-    top: 0;
-    width: 64px;
-    height: 40px;
-  }
+  .xpro-ol-logo {
+    height: 33px;
+    width: 129px;
+    filter: brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(7500%) hue-rotate(261deg) brightness(98%) contrast(106%);
+  }  
 
-  .marketing-site-link {
-    left: 74px;
-    top: 2px;
-    width: 60px;
-    height: 40px;
-  }
 }
