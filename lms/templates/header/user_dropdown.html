@@ -10,7 +10,6 @@ from django.urls import reverse
 from django.utils.translation import gettext as _
 
 from openedx.core.djangoapps.user_api.accounts.utils import retrieve_last_sitewide_block_completed
-from common.djangoapps.student.models import UserProfile
 %>
 
 <%
@@ -18,15 +17,17 @@ from common.djangoapps.student.models import UserProfile
 self.real_user = getattr(user, 'real_user', user)
 username = self.real_user.username
 resume_block = retrieve_last_sitewide_block_completed(self.real_user)
-full_name = UserProfile.objects.get(user=self.real_user).name
+## Fall back to the username for users without a profile instead of raising a 500.
+profile = getattr(self.real_user, 'profile', None)
+full_name = (profile.name if profile else '') or username
 dashboard_url = urljoin(settings.MARKETING_SITE_BASE_URL, "dashboard")
 profile_url = urljoin(settings.MARKETING_SITE_BASE_URL, "profile")
 %>
 
 <div class="nav-item hidden-mobile">
-    <a href="${reverse('dashboard')}" class="menu-title">
+    <a href="${dashboard_url}" class="menu-title">
         <span class="sr-only">${_("Dashboard for:")}</span>
-        <span class="username">${full_name}</span>
+        <span data-hj-suppress class="username">${full_name}</span>
     </a>
 </div>
 <div class="nav-item hidden-mobile nav-item-dropdown" tabindex="-1">
